@@ -14,9 +14,12 @@ s.headers.update(headers)
 s.post(url+'admin/login',data={'username':'admin','password':'root'})
 for line in open(b'D:\\kaihu.txt','r'):
     l = line.split()
-    usrpsw = l[7].split('/')
-    l[7] = usrpsw[0]
-    l.insert(8,usrpsw[1])
+    if ':' not in l[6]:
+        l.insert(6,'FFFFFFFFFFFF')
+    if len(l[7].split('/'))==2:
+        usrpsw = l[7].split('/')
+        l[7] = usrpsw[0]
+        l.insert(8,usrpsw[1])
     timecover = l[9].split("/")
     timecover_ = datetime.date(int(timecover[0]), int(timecover[1]), int(timecover[2]))
     timecover__ = timecover_
