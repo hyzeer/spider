@@ -12,7 +12,7 @@ url = 'http://10.73.230.5:1816/'
 s = requests.session()
 s.headers.update(headers)
 s.post(url+'admin/login',data={'username':'admin','password':'root'})
-for line in open(b'D:\\kaihu.txt','r'):
+for seq,line in enumerate(open(b'D:\\kaihu.txt','r')):
     l = line.split()
     if ':' not in l[6]:
         l.insert(6,'FFFFFFFFFFFF')
@@ -45,7 +45,7 @@ for line in open(b'D:\\kaihu.txt','r'):
                                                        'customer_desc': '',
                                                        'submit': '', }).text
     if "alert-warning" not in result:
-        print("{0} 开户成功".format(l[7]))
+        print("{0}. {1} 开户成功".format(seq+1,l[7]))
     else:
         print("未知错误,开户失败")
     s.close()
