@@ -31,7 +31,7 @@ for seq,line in enumerate(open(b'D:\\kaihu.txt','r')):
                                                        'realname': '%s' % (l[1]),
                                                        'idcard': '0',
                                                        'mobile': '%s' % (l[5]),
-                                                       'email': '0',
+                                                       'email': '%s' % (l[6]),
                                                        'address': '%s' % (l[4]),
                                                        'account_number': '%s' % (l[7]),
                                                        'password': '%s' % (l[8]),
