@@ -12,11 +12,14 @@ url = 'http://10.73.230.5:1816/'
 s = requests.session()
 s.headers.update(headers)
 s.post(url+'admin/login',data={'username':'admin','password':'root'})
-for line in open(b'D:\\kaihu.txt','r'):
+for seq,line in enumerate(open(b'D:\\kaihu.txt','r')):
     l = line.split()
-    usrpsw = l[7].split('/')
-    l[7] = usrpsw[0]
-    l.insert(8,usrpsw[1])
+    if ':' not in l[6]:
+        l.insert(6,'FFFFFFFFFFFF')
+    if len(l[7].split('/'))==2:
+        usrpsw = l[7].split('/')
+        l[7] = usrpsw[0]
+        l.insert(8,usrpsw[1])
     timecover = l[9].split("/")
     timecover_ = datetime.date(int(timecover[0]), int(timecover[1]), int(timecover[2]))
     timecover__ = timecover_
@@ -28,7 +31,7 @@ for line in open(b'D:\\kaihu.txt','r'):
                                                        'realname': '%s' % (l[1]),
                                                        'idcard': '0',
                                                        'mobile': '%s' % (l[5]),
-                                                       'email': '0',
+                                                       'email': '%s' % (l[6]),
                                                        'address': '%s' % (l[4]),
                                                        'account_number': '%s' % (l[7]),
                                                        'password': '%s' % (l[8]),
@@ -42,7 +45,7 @@ for line in open(b'D:\\kaihu.txt','r'):
                                                        'customer_desc': '',
                                                        'submit': '', }).text
     if "alert-warning" not in result:
-        print("{0} 开户成功".format(l[7]))
+        print("{0}. {1} 开户成功".format(seq+1,l[7]))
     else:
         print("未知错误,开户失败")
     s.close()
