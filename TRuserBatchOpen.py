@@ -31,7 +31,7 @@ for seq,line in enumerate(open(b'D:\\kaihu.txt','r')):
                                                        'realname': '%s' % (l[1]),
                                                        'idcard': '0',
                                                        'mobile': '%s' % (l[5]),
-                                                       'email': '%s' % (l[6]),
+                                                       'email': '',
                                                        'address': '%s' % (l[4]),
                                                        'account_number': '%s' % (l[7]),
                                                        'password': '%s' % (l[8]),
@@ -42,7 +42,7 @@ for seq,line in enumerate(open(b'D:\\kaihu.txt','r')):
                                                        'fee_value': '288.00',
                                                        'expire_date': '%s' % (l[9]),
                                                        'status': '1',
-                                                       'customer_desc': '',
+                                                       'customer_desc': '%s'% (l[6]),
                                                        'submit': '', }).text
     if "alert-warning" not in result:
         print("{0}. {1} 开户成功".format(seq+1,l[7]))
