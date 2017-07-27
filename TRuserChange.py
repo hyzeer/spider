@@ -10,7 +10,7 @@ headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;
            'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:22.0) Gecko/20100101 Firefox/22.0'}
 
 url = 'http://10.73.230.5:1816/'
-packages = {'6M':'2','10M':'3','20M':'4','50M':'5','100M':'6'}
+packages = {'6M':'2','10M':'3','20M':'4','50M':'5','100M':'6','30M':'14','60M':'15'}
 s = requests.session()
 s.headers.update(headers)
 s.post(url+'admin/login',data={'username':'admin','password':'root'})
