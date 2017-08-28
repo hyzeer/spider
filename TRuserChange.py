@@ -16,9 +16,15 @@ s.headers.update(headers)
 s.post(url+'admin/login',data={'username':'admin','password':'root'})
 for line in open(b'D:\\xufei.txt','r'):
     l = line.split()
-    timecover = l[4].split("-")
+    if '-' in l[4]:
+        timecover = l[4].split("-")
+    if '/' in l[4]:
+        timecover = l[4].split("/")
     timecover_ = datetime.date(int(timecover[0]), int(timecover[1]), int(timecover[2]))
     l[4] = str(timecover_ + datetime.timedelta(365))
+    if '恋家' in l[5]:
+        l[13] = l[14]
+        l[9] = re.sub('\D', '', l[9])
     if '100M' in l[5]:
         rate = l[5].split('￥')
         l.insert(6, rate[0][-4::])
